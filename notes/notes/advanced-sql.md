@@ -36,7 +36,7 @@ WHERE column operator (
 );
 Example
 sql
-Copy code
+
 SELECT *
 FROM Employee
 WHERE salary > (SELECT AVG(salary) FROM Employee);
@@ -49,7 +49,7 @@ A correlated subquery depends on the outer query and is executed row by row.
 
 Example
 sql
-Copy code
+
 SELECT *
 FROM Employee e
 WHERE salary > (
@@ -71,7 +71,7 @@ INNER JOIN
 Returns only matching records from both tables.
 
 sql
-Copy code
+
 SELECT e.name, d.dept_name
 FROM Employee e
 JOIN Department d
@@ -80,7 +80,7 @@ LEFT JOIN
 Returns all records from the left table and matching records from the right table.
 
 sql
-Copy code
+
 SELECT *
 FROM Employee e
 LEFT JOIN Department d
@@ -94,7 +94,7 @@ A self join joins a table with itself.
 
 Example
 sql
-Copy code
+
 SELECT e.name AS Employee, m.name AS Manager
 FROM Employee e
 JOIN Employee m
@@ -111,7 +111,7 @@ Used to filter groups, not individual rows.
 
 Example
 sql
-Copy code
+
 SELECT department, COUNT(*)
 FROM Employee
 GROUP BY department
@@ -141,7 +141,7 @@ AVG() OVER()
 
 Example
 sql
-Copy code
+
 SELECT name, salary,
 RANK() OVER (ORDER BY salary DESC) AS rank
 FROM Employee;
@@ -155,13 +155,13 @@ Rank employees department-wise based on salary.
 7. Finding Nth Highest Salary
 Second Highest Salary (Subquery)
 sql
-Copy code
+
 SELECT MAX(salary)
 FROM Employee
 WHERE salary < (SELECT MAX(salary) FROM Employee);
 Using Window Function
 sql
-Copy code
+
 SELECT salary
 FROM (
     SELECT salary,
@@ -178,7 +178,7 @@ Used to apply conditional logic in SQL queries.
 
 Example
 sql
-Copy code
+
 SELECT name,
 CASE
     WHEN salary >= 60000 THEN 'High'
@@ -195,7 +195,7 @@ NULL is not equal to 0.
 
 IS NULL / IS NOT NULL
 sql
-Copy code
+
 SELECT *
 FROM Employee
 WHERE dept_id IS NULL;
@@ -203,7 +203,7 @@ COALESCE
 Returns the first non-null value.
 
 sql
-Copy code
+
 SELECT COALESCE(dept_id, 'Not Assigned')
 FROM Employee;
 Practice Question
@@ -212,14 +212,14 @@ Display department as “Not Assigned” if it is NULL.
 10. Duplicate Records
 Find Duplicate Records
 sql
-Copy code
+
 SELECT email, COUNT(*)
 FROM Users
 GROUP BY email
 HAVING COUNT(*) > 1;
 Remove Duplicate Records
 sql
-Copy code
+
 DELETE FROM Users
 WHERE id NOT IN (
     SELECT MIN(id)
@@ -235,7 +235,7 @@ A transaction is a group of SQL statements executed as a single unit.
 
 Commands
 sql
-Copy code
+
 START TRANSACTION;
 COMMIT;
 ROLLBACK;
@@ -258,7 +258,7 @@ Faster SELECT queries
 Improved search performance
 
 sql
-Copy code
+
 CREATE INDEX idx_salary
 ON Employee(salary);
 Important Note
@@ -272,7 +272,7 @@ Definition
 A view is a virtual table created using a SELECT query.
 
 sql
-Copy code
+
 CREATE VIEW emp_view AS
 SELECT name, salary
 FROM Employee;
@@ -293,7 +293,7 @@ Faster execution
 Improved security
 
 sql
-Copy code
+
 CREATE PROCEDURE getEmployees()
 BEGIN
     SELECT * FROM Employee;
@@ -306,7 +306,7 @@ Definition
 A trigger is automatically executed when an INSERT, UPDATE, or DELETE occurs.
 
 sql
-Copy code
+
 CREATE TRIGGER before_insert
 BEFORE INSERT ON Employee
 FOR EACH ROW
