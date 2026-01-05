@@ -1,61 +1,53 @@
-INTRODUCTION TO SQL
-What is SQL?
+# Introduction to SQL
+
+## What is SQL?
 
 SQL (Structured Query Language) is used to:
+- Store data
+- Retrieve data
+- Manipulate data
+- Control database access
 
-Store data
+## Why SQL?
+- Used in Data Science, Data Analysis, Backend, Machine Learning, and Business Intelligence
+- Works efficiently with large structured datasets
+- Industry-standard language used across organizations
 
-Retrieve data
+---
 
-Manipulate data
+## Database Basics
 
-Control database access
-
-Why SQL?
-
-Used in Data Science, Data Analysis, Backend, ML, BI
-
-Works with large structured data
-
-Industry standard (used everywhere)
-
-2️⃣ DATABASE BASICS
-What is Database?
-
+### What is a Database?
 A database is an organized collection of data stored electronically.
 
-Types of Databases
+### Types of Databases
+- **Relational Databases**: MySQL, PostgreSQL, Oracle, SQL Server
+- **NoSQL Databases**: MongoDB, Cassandra
 
-Relational (MySQL, PostgreSQL, Oracle, SQL Server)
+### RDBMS (Relational Database Management System)
+- Data stored in tables (rows and columns)
+- Uses primary keys and foreign keys
+- Follows ACID properties
 
-NoSQL (MongoDB, Cassandra)
+---
 
-RDBMS
+## Table Structure
 
-Data stored in tables (rows + columns)
+- **Row** → Record  
+- **Column** → Attribute  
 
-Uses primary keys & foreign keys
-
-Follows ACID properties
-
-3️⃣ TABLE STRUCTURE
-Table
-
-Row = Record
-
-Column = Attribute
-
-Example
+### Example
+sql
 CREATE TABLE Student (
     id INT,
     name VARCHAR(50),
     age INT
 );
 
-4️⃣ SQL COMMAND TYPES
-1. DDL – Data Definition Language
+SQL Command Types
+DDL – Data Definition Language
 
-Used to define structure
+Used to define database structure:
 
 CREATE
 
@@ -65,9 +57,9 @@ DROP
 
 TRUNCATE
 
-2. DML – Data Manipulation Language
+DML – Data Manipulation Language
 
-Used to modify data
+Used to modify data:
 
 INSERT
 
@@ -75,23 +67,23 @@ UPDATE
 
 DELETE
 
-3. DQL – Data Query Language
+DQL – Data Query Language
 
-Used to fetch data
+Used to retrieve data:
 
 SELECT
 
-4. DCL – Data Control Language
+DCL – Data Control Language
 
-Used for permissions
+Used to manage permissions:
 
 GRANT
 
 REVOKE
 
-5. TCL – Transaction Control Language
+TCL – Transaction Control Language
 
-Used for transactions
+Used for transactions:
 
 COMMIT
 
@@ -99,7 +91,7 @@ ROLLBACK
 
 SAVEPOINT
 
-5️⃣ DDL COMMANDS
+DDL Commands
 CREATE
 CREATE TABLE Employee (
     emp_id INT PRIMARY KEY,
@@ -118,16 +110,15 @@ DROP TABLE Employee;
 TRUNCATE
 TRUNCATE TABLE Employee;
 
+Difference Between DELETE, TRUNCATE, DROP
 
-👉 Difference:
+DELETE → Removes rows
 
-DELETE → removes rows
+TRUNCATE → Removes all rows (faster)
 
-TRUNCATE → removes all rows (faster)
+DROP → Removes table structure
 
-DROP → removes table structure
-
-6️⃣ DML COMMANDS
+DML Commands
 INSERT
 INSERT INTO Employee VALUES (1, 'Rahul', 50000);
 INSERT INTO Employee (emp_id, emp_name) VALUES (2, 'Aman');
@@ -138,65 +129,78 @@ SET salary = 60000
 WHERE emp_id = 1;
 
 DELETE
-DELETE FROM Employee WHERE emp_id = 2;
+DELETE FROM Employee
+WHERE emp_id = 2;
 
-7️⃣ SELECT QUERY (MOST IMPORTANT)
+SELECT Query
 Basic SELECT
 SELECT * FROM Employee;
 SELECT emp_name, salary FROM Employee;
 
 WHERE Clause
-SELECT * FROM Employee WHERE salary > 40000;
+SELECT * FROM Employee
+WHERE salary > 40000;
 
 AND / OR / NOT
-SELECT * FROM Employee
+SELECT *
+FROM Employee
 WHERE salary > 40000 AND department = 'IT';
 
-8️⃣ OPERATORS
-Comparison
+Operators
+Comparison Operators
 
 =
 
 !=
 
->
-
 <
 
->=
+=
 
 <=
 
 BETWEEN
-SELECT * FROM Employee WHERE salary BETWEEN 30000 AND 60000;
+SELECT *
+FROM Employee
+WHERE salary BETWEEN 30000 AND 60000;
 
 IN
-SELECT * FROM Employee WHERE department IN ('IT','HR');
+SELECT *
+FROM Employee
+WHERE department IN ('IT', 'HR');
 
 LIKE
-SELECT * FROM Employee WHERE emp_name LIKE 'A%';
+SELECT *
+FROM Employee
+WHERE emp_name LIKE 'A%';
 
 IS NULL
-SELECT * FROM Employee WHERE department IS NULL;
+SELECT *
+FROM Employee
+WHERE department IS NULL;
 
-9️⃣ ORDER BY & LIMIT
+ORDER BY and LIMIT
 ORDER BY
-SELECT * FROM Employee ORDER BY salary DESC;
+SELECT *
+FROM Employee
+ORDER BY salary DESC;
 
 LIMIT
-SELECT * FROM Employee LIMIT 5;
+SELECT *
+FROM Employee
+LIMIT 5;
 
-🔟 AGGREGATE FUNCTIONS
-Function	Use
+Aggregate Functions
+Function	Description
 COUNT()	Number of rows
-SUM()	Total
-AVG()	Average
-MIN()	Minimum
-MAX()	Maximum
+SUM()	Total value
+AVG()	Average value
+MIN()	Minimum value
+MAX()	Maximum value
 SELECT COUNT(*) FROM Employee;
 SELECT AVG(salary) FROM Employee;
 
-1️⃣1️⃣ GROUP BY & HAVING
+GROUP BY and HAVING
 GROUP BY
 SELECT department, AVG(salary)
 FROM Employee
@@ -209,10 +213,11 @@ GROUP BY department
 HAVING COUNT(*) > 2;
 
 
-👉 WHERE → filters rows
-👉 HAVING → filters groups
+WHERE filters rows
 
-1️⃣2️⃣ JOINS (VERY IMPORTANT 🔥)
+HAVING filters groups
+
+Joins
 Types of Joins
 
 INNER JOIN
@@ -237,7 +242,7 @@ FROM Employee e
 LEFT JOIN Department d
 ON e.dept_id = d.dept_id;
 
-1️⃣3️⃣ SUBQUERIES
+Subqueries
 Subquery in WHERE
 SELECT *
 FROM Employee
@@ -245,10 +250,14 @@ WHERE salary > (SELECT AVG(salary) FROM Employee);
 
 Subquery in FROM
 SELECT *
-FROM (SELECT * FROM Employee WHERE salary > 50000) AS temp;
+FROM (
+    SELECT *
+    FROM Employee
+    WHERE salary > 50000
+) AS temp;
 
-1️⃣4️⃣ CONSTRAINTS
-Types
+Constraints
+Types of Constraints
 
 PRIMARY KEY
 
@@ -269,10 +278,10 @@ CREATE TABLE Student (
     age INT CHECK (age >= 18)
 );
 
-1️⃣5️⃣ KEYS
+Keys
 Primary Key
 
-Uniquely identifies a row
+Uniquely identifies each record
 
 Cannot be NULL
 
@@ -280,9 +289,9 @@ Foreign Key
 
 Links two tables
 
-FOREIGN KEY (dept_id) REFERENCES Department(dept_id)
+FOREIGN KEY (dept_id) REFERENCES Department(dept_id);
 
-1️⃣6️⃣ NORMALIZATION
+Normalization
 Purpose
 
 Reduce redundancy
@@ -297,25 +306,27 @@ Normal Forms
 
 3NF – No transitive dependency
 
-1️⃣7️⃣ VIEWS
-What is View?
+Views
+What is a View?
 
-A virtual table based on SELECT query
+A virtual table created using a SELECT query.
 
 CREATE VIEW emp_view AS
-SELECT emp_name, salary FROM Employee;
+SELECT emp_name, salary
+FROM Employee;
 
-1️⃣8️⃣ INDEXES
+Indexes
 Why Index?
 
-Faster data retrieval
+Improves data retrieval speed
 
-CREATE INDEX idx_salary ON Employee(salary);
+CREATE INDEX idx_salary
+ON Employee(salary);
 
 
-⚠️ Slows down INSERT/UPDATE slightly
+Note: Indexes slightly slow down INSERT and UPDATE operations.
 
-1️⃣9️⃣ TRANSACTIONS
+Transactions
 ACID Properties
 
 Atomicity
@@ -333,7 +344,7 @@ COMMIT;
 
 ROLLBACK;
 
-2️⃣0️⃣ STORED PROCEDURES
+Stored Procedures
 CREATE PROCEDURE getEmployees()
 BEGIN
     SELECT * FROM Employee;
@@ -341,36 +352,38 @@ END;
 
 CALL getEmployees();
 
-2️⃣1️⃣ FUNCTIONS
+Functions
 CREATE FUNCTION bonus(salary INT)
 RETURNS INT
 RETURN salary * 0.10;
 
-2️⃣2️⃣ TRIGGERS
+Triggers
 
-Automatically executed on INSERT/UPDATE/DELETE
+Triggers are automatically executed on INSERT, UPDATE, or DELETE.
 
 CREATE TRIGGER before_insert
 BEFORE INSERT ON Employee
 FOR EACH ROW
 SET NEW.salary = NEW.salary + 1000;
 
-2️⃣3️⃣ WINDOW FUNCTIONS (ADVANCED 🔥)
-ROW_NUMBER
+Window Functions
+ROW_NUMBER()
 SELECT emp_name, salary,
 ROW_NUMBER() OVER (ORDER BY salary DESC) AS rank
 FROM Employee;
 
 RANK vs DENSE_RANK
 
-RANK → skips numbers
+RANK → Skips numbers
 
-DENSE_RANK → no skip
+DENSE_RANK → Does not skip numbers
 
-2️⃣4️⃣ CASE STATEMENT
+CASE Statement
 SELECT emp_name,
 CASE
     WHEN salary > 50000 THEN 'High'
     ELSE 'Low'
 END AS salary_status
 FROM Employee;
+
+
