@@ -1,7 +1,12 @@
-## 📌 Table of Contents
+# SQL Notes & Practice
 
-### 📘 Notes
-- [Basic SQL](notes/notes/basic-sql.md)
-- [Advanced SQL](notes/notes/advanced-sql.md)
-- [Window Functions](notes/notes/window-functions.md)
+This repository contains my SQL notes and practice problems.
+I am using it to revise concepts and prepare for interviews.
 
+## Structure
+
+- 📓 notes/  
+  Topic-wise SQL notes
+
+- 🧠 leetcode/  
+  SQL problems solved from LeetCode
