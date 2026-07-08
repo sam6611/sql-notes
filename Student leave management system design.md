@@ -1,0 +1,1 @@
+![[automated_leave_management_architecture.svg]]![[hybrid_automation_decision_flow.svg]]
